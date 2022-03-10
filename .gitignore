@@ -31,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Classified ###
-src/main/resources/properties/classified.properties
-src/test/resources/properties/classified.properties
