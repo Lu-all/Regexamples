@@ -1,59 +1,101 @@
 # Regexamples
-## Caso A
-Extraer años en un texto.
-### Caso base:
-Ariadna Thalía Sodi Miranda (Ciudad de México, 26 de agosto de 1971), conocida como Thalía, 
-es una cantante, actriz y empresaria mexicana.
-Inició su carrera musical a principios de los años 1980 como vocalista de un grupo infantil 
-llamado Din-Din y en 1986 se integró a la banda Timbiriche, con la que grabó tres álbumes de 
-estudio, y de la que se separó en 1989. Regresó a México en 1990. Publicó Mundo de cristal en 
-1991 y Love en 1992, los cuales lograron éxito en ventas en territorio mexicano. En 1994 firmó 
-un contrato. En 2009 firmó un contrato con Sony Music. Primera fila: Thalía, al distribuir 
-500000 copias en México.
-### Expresión regular:
+
+A repository with 5 examples of regular expressions in Java.
+
+## Program A
+
+Extract years from a text.
+
+### Example:
+
+Ariadna Thalía Sodi Miranda (Mexico City, August 26, 1971), known as Thalía, is a Mexican singer, actress and businesswoman.
+She began her musical career in the early 1980s as the lead singer of a children's group called Din-Din and in 1986 she joined the band Timbiriche,
+with which she recorded three studio albums, and from which she separated in 1989. She returned to Mexico in 1990.
+She released Mundo de cristal in 1991 and Love in 1992, both of which achieved sales success in Mexican territory.
+In 1994 she signed a contract. In 2009 she signed a contract with Sony Music. First row: Thalia, by distributing 500,000 copies in Mexico.
+
+### Regex:
+
 ```
 /(?:\D|^)(\d{4})(?:\D|$)/g
 ```
-## Caso B
-Comprobar si una matrícula es válida
-### Casos base:
+
+## Program B
+
+Check if a (Spanish) license plate is valid:
+
+1. It can start with “E-” or "E "
+2. Must be followed by 4 digits.
+3. Must be followed by a hyphen or a space
+4. Must be followed by three letters
+
+### Example:
+
 E1337ZZZ, E-0000 PCB, 7899-FGV, E7654AER
-### Expresión regular:
+
+### Regex:
+
 ```
 /\b(E[- ]?)?)\d{4})[- ])([A-Z]{3})\b/g
 ```
-## Caso C
-Saber si un correo de profesor o alumno de la URJC es válido (y separar ambos casos)
-### Casos base:
-e.aozanoo.2015@alumnos.urjc.es, elvis.aozanoo@urjc.es
-### Expresión regular:
+
+## Program C
+
+Check if a URJC teacher or student email is valid (and separate both cases)
+
+- Teacher email: ending in @urjc.es
+- Student email: ending in @alumnos.urjc.es
+  
+### Example:
+
+e.aoza.2015@alumnos.urjc.es, elvis.aoza@urjc.es
+
+### Regex:
+
 ```
 /(?:[a-z]\.([a-z]{2,})\.(\d{4})@alumnos\.urjc\.es)|(?:[a-z]+)\.([a-z]+)@urjc\.es)/
 ```
-## Caso D
-Ver si una dirección es válida
-### Casos base:
+
+## Program D
+
+Check if a (Spanish) address is valid
+
+### Example:
+
 C/ Dulcinea Nº 10, 28936, Calle Dulcineña 10, 28106, Calle Dulcínea N10, 28091; Calle Ñ n9, 
 23451
-### Expresión regular:
+
+### Regex:
+
 ```
 /(?:(?:C\/)|(?:Calle)) ([A-ZÑÀ-ÿ][\wñÀ-ÿ]*),? *(?:[Nn]º? ?)?(\d+), *(\d{5})/g
 ```
-## Caso E
-Separar información por campos en un log
-## Casos base:
+
+## Program E
+
+Separate information by fields in a log
+
+### Example:
+
 2022-02-07 01:14:28.313 INFO 1174086 --- [main] drfp.Main : Starting Main v0.1- SNAPSHOT 
-using Java 17.0.1 on raul2-ubuntu with PID 1174086 started by rmartin 
+using Java 17.0.1 on r2-ubuntu with PID 1174086 started by rm 
+
 2022-02-07 01:14:28.317 INFO 1174086 --- [main] drfp.Main : No active profile set, falling back 
 to default profiles: default 
+
 2022-02-07 01:14:29.428 INFO 1174086 --- [main] a.p.q.PostPCheck : Bean 
 ’eventAsyncConfigurer’ of type 
+
 [es.urjc.etsii.grafo.solver.services.events.EventAsyncConfigurer] is not eligible for getting 
 processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+
 2022-02-07 01:14:29.806 INFO 1174086 --- [main] TomcatWebServer : Tomcat initialized with 
 port(s): 8080 (http) 
+
 2022-02-07 01:14:29.818 INFO 1174086 --- [main] o.a.c.c.StdSvc : Starting service [Tomcat]
-### Expresión regular:
+
+### Regex:
+
 ```
 /([A-Z]+).*\[(\w+)][\sa-z.]*([A-Z][\w]*)\s*:\s*(.+)/g
 ```
